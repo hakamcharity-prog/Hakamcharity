@@ -1332,6 +1332,7 @@
   <ul class="nav-links">
     <li><a href="#mission">Our Mission</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#programs">Ongoing Programs</a></li>
     <li><a href="#impact">Our Impact</a></li>
     <li><a href="#donate-form">📋 Donate Form</a></li>
     <li><a href="#payment">Donate</a></li>
@@ -1352,6 +1353,7 @@
   <ul>
     <li><a href="#mission" onclick="closeMenu()">Our Mission</a></li>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#programs" onclick="closeMenu()">Ongoing Programs</a></li>
     <li><a href="#impact" onclick="closeMenu()">Our Impact</a></li>
     <li><a href="#why" onclick="closeMenu()">Why Donate</a></li>
     <li><a href="#videos" onclick="closeMenu()">🎥 Videos</a></li>
@@ -1637,29 +1639,92 @@
 <!-- ===== DONATION FORM SECTION ===== -->
 
 
+<!-- ===== ONGOING PROGRAMS ===== -->
+<section id="programs" style="padding:5rem 1.5rem; background:var(--cream); position:relative;">
+  <div class="section-title fade-in-section" style="margin-bottom:2.5rem;">
+    <span class="label">LIVE ON THE GROUND</span>
+    <h2>Our Ongoing Programs</h2>
+    <p>These are the programs currently running. Join us and earn continuous reward, Insha'Allah. 🤲</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="prog-grid">
+    <!-- Program 1 -->
+    <figure class="prog-card" onclick="openProg(this)">
+      <div class="prog-img"><img src="https://i.postimg.cc/zBtrZdrR/IMG-20261004-WA0004.jpg" alt="Hakam Charity ongoing program 1" loading="lazy" decoding="async"></div>
+      <figcaption><span class="prog-badge">● Ongoing</span><h3>Ongoing Program 1</h3></figcaption>
+    </figure>
+    <!-- Program 2 -->
+    <figure class="prog-card" onclick="openProg(this)">
+      <div class="prog-img"><img src="https://i.postimg.cc/xCx2Ds2N/IMG-20261004-WA0005.jpg" alt="Hakam Charity ongoing program 2" loading="lazy" decoding="async"></div>
+      <figcaption><span class="prog-badge">● Ongoing</span><h3>Ongoing Program 2</h3></figcaption>
+    </figure>
+    <!-- NEW IMAGE PLACEHOLDER (replace PLACEHOLDER_URL_HERE with the new image link, then delete the "prog-empty" class) -->
+    <figure class="prog-card prog-empty" onclick="openProg(this)">
+      <div class="prog-img">
+        <img src="PLACEHOLDER_URL_HERE" alt="New ongoing program" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <div class="prog-ph"><span>🖼️</span><b>New Image Placeholder</b><small>Add the next program image here</small></div>
+      </div>
+      <figcaption><span class="prog-badge">● Coming Soon</span><h3>New Program</h3></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Programs image viewer -->
+<div id="progViewer" onclick="closeProg()" style="display:none;position:fixed;inset:0;background:rgba(5,10,20,0.95);z-index:10000;align-items:center;justify-content:center;padding:1rem;">
+  <button onclick="closeProg()" aria-label="Close" style="position:absolute;top:1rem;right:1.2rem;background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:1.8rem;width:44px;height:44px;border-radius:50%;cursor:pointer;">×</button>
+  <img id="progViewerImg" src="" alt="" style="max-width:100%;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+</div>
+<style>
+  .prog-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.6rem; }
+  .prog-card { margin:0; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(11,30,61,0.12); border-top:4px solid var(--gold); cursor:pointer; transition:transform .3s ease, box-shadow .3s ease; }
+  .prog-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(11,30,61,0.2); }
+  .prog-img { position:relative; width:100%; aspect-ratio:4/5; background:var(--cream-dark); overflow:hidden; }
+  .prog-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .prog-ph { display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:.4rem; text-align:center; color:var(--navy-accent); border:2px dashed rgba(30,77,140,.4); margin:.8rem; border-radius:12px; background:rgba(255,255,255,.6); }
+  .prog-ph span { font-size:2.6rem; }
+  .prog-ph b { font-family:'Poppins',sans-serif; font-size:1rem; }
+  .prog-ph small { font-size:.78rem; opacity:.75; }
+  .prog-empty .prog-ph { display:flex; }
+  .prog-empty .prog-img img { z-index:1; }
+  .prog-card figcaption { padding:1rem 1.2rem 1.2rem; }
+  .prog-card h3 { margin:.5rem 0 0; font-family:'Playfair Display',serif; color:var(--navy-deep); font-size:1.1rem; }
+  .prog-badge { display:inline-block; font-family:'Poppins',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.04em; color:#fff; background:var(--green-fresh); padding:.2rem .7rem; border-radius:20px; }
+</style>
+<script>
+function openProg(card){
+  var img = card.querySelector('img');
+  if (!img || img.style.display === 'none' || card.classList.contains('prog-empty')) return;
+  document.getElementById('progViewerImg').src = img.src;
+  document.getElementById('progViewer').style.display = 'flex';
+}
+function closeProg(){ document.getElementById('progViewer').style.display = 'none'; }
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeProg(); });
+</script>
+
 <!-- ===== VIDEOS ===== -->
 <section id="videos" style="padding:5rem 1.5rem; background:linear-gradient(160deg,var(--navy-mid),var(--navy-deep)); position:relative;">
   <div class="section-title" style="margin-bottom:2.5rem;">
     <span class="label" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">OUR VIDEOS</span>
     <h2 style="color:var(--white);font-family:'Playfair Display',serif;">See Our Work in Action</h2>
-    <p style="color:rgba(255,255,255,0.72);">Watch how your generosity reaches families and communities. Tap the sound icon to unmute. 🤲</p>
+    <p style="color:rgba(255,255,255,0.72);">Watch how your generosity reaches families and communities. Videos play one after another automatically, or tap play on any video. Tap the sound icon to unmute. 🤲</p>
     <div class="divider" style="background:linear-gradient(90deg,var(--gold),var(--gold-light));margin:1rem auto 0;"></div>
   </div>
   <div class="vid-grid">
     <div class="vid-card vid-feature">
-      <div class="vid-frame"><iframe data-vid="CBu7kbZH8c0" title="Hakam Charity video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vid-frame"><div class="vid-slot" data-vid="CBu7kbZH8c0" data-title="Hakam Charity video 1"></div></div>
     </div>
     <div class="vid-card">
-      <div class="vid-frame"><iframe data-vid="lOrvR9z844E" data-alt="IOrvR9z844E" title="Hakam Charity video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vid-frame"><div class="vid-slot" data-vid="lOrvR9z844E" data-alt="IOrvR9z844E" data-title="Hakam Charity video 2"></div></div>
     </div>
     <div class="vid-card">
-      <div class="vid-frame"><iframe data-vid="iSeURCyzH9k" title="Hakam Charity video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vid-frame"><div class="vid-slot" data-vid="iSeURCyzH9k" data-title="Hakam Charity video 3"></div></div>
     </div>
     <div class="vid-card">
-      <div class="vid-frame"><iframe data-vid="Zm-8-e3Utas" title="Hakam Charity video 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vid-frame"><div class="vid-slot" data-vid="Zm-8-e3Utas" data-title="Hakam Charity video 4"></div></div>
     </div>
     <div class="vid-card">
-      <div class="vid-frame"><iframe data-vid="OGgsAD12jgE" title="Hakam Charity video 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="vid-frame"><div class="vid-slot" data-vid="OGgsAD12jgE" data-title="Hakam Charity video 5"></div></div>
     </div>
   </div>
 </section>
@@ -1673,39 +1738,95 @@
 </style>
 <script>
 (function () {
-  var frames = document.querySelectorAll('#videos iframe[data-vid]');
-  function cmd(f, fn) {
-    if (f.contentWindow) f.contentWindow.postMessage(JSON.stringify({event:'command', func:fn, args:''}), '*');
-  }
-  function resolveId(f, done) {
-    var main = f.dataset.vid, alt = f.dataset.alt;
+  var slots = Array.prototype.slice.call(document.querySelectorAll('#videos .vid-slot'));
+  var players = [];        // YT.Player objects, same order as slots
+  var ready = [];
+  var current = -1;        // index of the video that is currently playing/last played
+  var wantUnmuted = false; // remember if the visitor unmuted, carry it to next video
+  var started = false;
+  var inView0 = false;
+
+  // load YouTube IFrame API once
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  // handles look-alike characters (l vs I) in a video ID
+  function resolveId(slot, done) {
+    var main = slot.dataset.vid, alt = slot.dataset.alt;
     if (!alt) return done(main);
     var img = new Image();
     img.onload = function () { done(img.width > 120 ? main : alt); };
     img.onerror = function () { done(alt); };
     img.src = 'https://img.youtube.com/vi/' + main + '/mqdefault.jpg';
   }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      var f = e.target;
-      if (e.isIntersecting) {
-        if (!f.src && !f.dataset.loading) {
-          f.dataset.loading = '1';
-          // if a video link has look-alike characters (l vs I), pick whichever ID really exists
-          resolveId(f, function (id) {
-            // autoplay requires muted start in modern browsers
-            f.src = 'https://www.youtube.com/embed/' + id +
-                    '?autoplay=1&mute=1&playsinline=1&rel=0&enablejsapi=1&origin=' + encodeURIComponent(location.origin);
-          });
-        } else if (f.src) {
-          cmd(f, 'playVideo');
-        }
-      } else if (f.src) {
-        cmd(f, 'pauseVideo');
+
+  function pauseOthers(idx) {
+    players.forEach(function (p, i) {
+      if (i !== idx && p && p.pauseVideo && ready[i]) {
+        try { if (p.getPlayerState() === 1) p.pauseVideo(); } catch (e) {}
       }
     });
-  }, { threshold: 0.5 });
-  frames.forEach(function (f) { io.observe(f); });
+  }
+
+  function playIndex(idx, auto) {
+    var p = players[idx];
+    if (!p || !ready[idx]) return;
+    pauseOthers(idx);
+    current = idx;
+    if (auto) {
+      try { wantUnmuted ? p.unMute() : p.mute(); } catch (e) {}
+      // bring the next video into view
+      var card = slots[idx].closest('.vid-card');
+      if (card && card.scrollIntoView) card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    p.playVideo();
+  }
+
+  function createPlayer(i) {
+    resolveId(slots[i], function (id) {
+      players[i] = new YT.Player(slots[i], {
+        videoId: id,
+        playerVars: { playsinline:1, rel:0, modestbranding:1, origin: location.origin },
+        events: {
+          onReady: function () {
+            ready[i] = true;
+            // first video starts automatically (muted, as browsers require)
+            if (i === 0 && inView0 && !started) { started = true; players[0].mute(); playIndex(0, false); }
+          },
+          onStateChange: function (ev) {
+            if (ev.data === 1) {                       // PLAYING (auto or user clicked play)
+              current = i; started = true;
+              pauseOthers(i);                          // only one plays at a time
+              try { wantUnmuted = !players[i].isMuted(); } catch (e) {}
+            } else if (ev.data === 0) {                // ENDED -> play next
+              var next = (i + 1) % players.length;     // loops back to video 1 after the last
+              playIndex(next, true);
+            }
+          }
+        }
+      });
+    });
+  }
+
+  window.onYouTubeIframeAPIReady = function () {
+    slots.forEach(function (s, i) { createPlayer(i); });
+  };
+
+  // auto-start the first video when the section is on screen; pause when scrolled away
+  var section = document.getElementById('videos');
+  var secIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      inView0 = e.isIntersecting;
+      if (e.isIntersecting) {
+        if (!started && ready[0]) { started = true; players[0].mute(); playIndex(0, false); }
+      } else {
+        // pause whatever is playing when the visitor leaves the section
+        players.forEach(function (p, i) { try { if (ready[i] && p.getPlayerState() === 1) p.pauseVideo(); } catch (err) {} });
+      }
+    });
+  }, { threshold: 0.25 });
+  secIO.observe(section);
 })();
 </script>
 
